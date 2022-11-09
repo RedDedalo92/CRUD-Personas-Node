@@ -8,6 +8,7 @@ class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT || '3000';
+        this.middlewares();
         this.routes();
     }
 
@@ -15,6 +16,11 @@ class Server{
         this.app.listen(this.port, ()=>{
             console.log('Application running in port ', this.port)
         })
+    }
+
+    //Parseo del body
+    middlewares(){
+        this.app.use(express.json());
     }
 
     routes(){
